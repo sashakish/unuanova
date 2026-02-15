@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unua Nova — Design Studio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Nunito+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --waterscape: #7EB4B2;
+            --waterscape-dark: #5A9492;
+            --waterscape-light: #A8CECD;
+            --waterscape-pale: #E8F2F1;
+            --white: #FFFFFF;
+            --charcoal: #2E2E2E;
+            --soft-gray: #666;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Nunito Sans', -apple-system, sans-serif;
+            background-color: var(--white);
+            color: var(--charcoal);
+            line-height: 1.75;
+            font-weight: 400;
+            font-size: 16.5px;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ─── HERO ─── */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--waterscape);
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -30%;
+            width: 80%;
+            height: 200%;
+            background: radial-gradient(ellipse, rgba(255,255,255,0.08) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .hero-content {
+            text-align: center;
+            max-width: 700px;
+            padding: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+        .hero-content h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(3rem, 6vw, 5rem);
+            font-weight: 300;
+            color: var(--white);
+            letter-spacing: 0.05em;
+            margin-bottom: 0.5rem;
+            line-height: 1.15;
+        }
+        .hero-content .tagline {
+            font-family: 'Nunito Sans', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 400;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 2.5rem;
+        }
+        .hero-content p {
+            font-size: 1.15rem;
+            color: rgba(255, 255, 255, 0.85);
+            line-height: 1.8;
+            max-width: 520px;
+            margin: 0 auto 3rem;
+        }
+        .btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            font-family: 'Nunito Sans', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 400;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: all 0.4s ease;
+            cursor: pointer;
+        }
+        .btn-white {
+            background: var(--white);
+            color: var(--waterscape-dark);
+            border: none;
+        }
+        .btn-white:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        /* ─── ABOUT ─── */
+        .about {
+            padding: 7rem 3rem;
+            text-align: center;
+            background: var(--white);
+        }
+        .about-inner {
+            max-width: 680px;
+            margin: 0 auto;
+        }
+        .section-label {
+            font-size: 0.75rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--waterscape);
+            margin-bottom: 1rem;
+        }
+        .section-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2rem, 3.5vw, 2.8rem);
+            font-weight: 300;
+            color: var(--charcoal);
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+        .section-title em {
+            font-style: italic;
+            color: var(--waterscape);
+        }
+        .divider {
+            width: 60px;
+            height: 1px;
+            background: var(--waterscape-light);
+            margin: 1.5rem auto 2rem;
+        }
+        .about p {
+            font-size: 1.1rem;
+            color: var(--soft-gray);
+            line-height: 1.9;
+            margin-bottom: 1rem;
+        }
+
+        /* ─── SERVICES ─── */
+        .services {
+            padding: 6rem 3rem;
+            background: var(--waterscape-pale);
+        }
+        .services .section-label,
+        .services .section-title { text-align: center; }
+        .services .section-title { margin-bottom: 3rem; }
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2.5rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .service-card {
+            background: var(--white);
+            padding: 2.5rem 2rem;
+            border-radius: 8px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .service-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px rgba(126, 180, 178, 0.15);
+        }
+        .service-card .icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        .service-card h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.4rem;
+            font-weight: 400;
+            color: var(--charcoal);
+            margin-bottom: 0.75rem;
+        }
+        .service-card p {
+            font-size: 0.95rem;
+            color: var(--soft-gray);
+            line-height: 1.7;
+        }
+
+        /* ─── CONTACT ─── */
+        .contact {
+            padding: 7rem 3rem;
+            background: var(--white);
+        }
+        .contact .section-label,
+        .contact .section-title { text-align: center; }
+        .contact .section-title { margin-bottom: 1rem; }
+        .contact > p {
+            text-align: center;
+            color: var(--soft-gray);
+            font-size: 1.05rem;
+            max-width: 500px;
+            margin: 0 auto 3rem;
+        }
+        .contact-form {
+            max-width: 520px;
+            margin: 0 auto;
+        }
+        .form-group {
+            margin-bottom: 1.25rem;
+        }
+        .form-group label {
+            display: block;
+            font-size: 0.8rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--soft-gray);
+            margin-bottom: 0.4rem;
+        }
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.85rem 1rem;
+            font-family: 'Nunito Sans', sans-serif;
+            font-size: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            background: var(--waterscape-pale);
+            color: var(--charcoal);
+            transition: border-color 0.3s;
+            outline: none;
+        }
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: var(--waterscape);
+        }
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+        .btn-submit {
+            width: 100%;
+            background: var(--waterscape);
+            color: var(--white);
+            border: none;
+            padding: 1rem;
+            font-family: 'Nunito Sans', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 400;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.4s ease;
+        }
+        .btn-submit:hover {
+            background: var(--waterscape-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(126, 180, 178, 0.3);
+        }
+
+        /* ─── FOOTER ─── */
+        footer {
+            padding: 3rem;
+            text-align: center;
+            background: var(--waterscape);
+        }
+        footer p {
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.6);
+            letter-spacing: 0.05em;
+        }
+        footer a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+        }
+        footer a:hover { text-decoration: underline; }
+
+        /* ─── ANIMATIONS ─── */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ─── RESPONSIVE ─── */
+        @media (max-width: 768px) {
+            .services-grid { grid-template-columns: 1fr; max-width: 400px; }
+            .hero-content h1 { letter-spacing: 0.02em; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Unua Nova</h1>
+            <p class="tagline">Design Studio</p>
+            <p>We craft elegant digital experiences for brands that value beauty, clarity, and intention.</p>
+            <a href="#contact" class="btn btn-white">Get in Touch</a>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section class="about" id="about">
+        <div class="about-inner fade-up">
+            <p class="section-label">Who We Are</p>
+            <h2 class="section-title">First <em>New</em></h2>
+            <div class="divider"></div>
+            <p>Unua Nova means "First New" in Esperanto. We believe every project deserves a fresh perspective, thoughtful design, and meticulous attention to detail.</p>
+            <p>We partner with therapists, wellness practitioners, and small businesses to create websites and brand identities that feel as good as they look.</p>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section class="services" id="services">
+        <div class="fade-up">
+            <p class="section-label">What We Do</p>
+            <h2 class="section-title">Our Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="icon">◈</div>
+                    <h3>Web Design</h3>
+                    <p>Beautiful, responsive websites built with care. From single-page experiences to full platforms.</p>
+                </div>
+                <div class="service-card">
+                    <div class="icon">✦</div>
+                    <h3>Brand Identity</h3>
+                    <p>Logos, color palettes, and visual systems that capture the essence of who you are.</p>
+                </div>
+                <div class="service-card">
+                    <div class="icon">○</div>
+                    <h3>Creative Direction</h3>
+                    <p>Strategic vision for your digital presence. We help you tell your story with intention.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="contact" id="contact">
+        <div class="fade-up">
+            <p class="section-label">Start a Project</p>
+            <h2 class="section-title">Let's Create <em>Together</em></h2>
+            <p>Tell us about your vision. We'd love to hear from you.</p>
+            <form class="contact-form" action="https://formsubmit.co/unuanova@gmail.com" method="POST">
+                <input type="hidden" name="_subject" value="New inquiry from Unua Nova website">
+                <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_next" value="https://sashakish.github.io/unuanova/">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Tell us about your project</label>
+                    <textarea id="message" name="message" required></textarea>
+                </div>
+                <button type="submit" class="btn-submit">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; <script>document.write(new Date().getFullYear())</script> Unua Nova &nbsp;·&nbsp; <a href="mailto:unuanova@gmail.com">unuanova@gmail.com</a></p>
+    </footer>
+
+    <script>
+        const fadeObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('visible');
+            });
+        }, { threshold: 0.15 });
+        document.querySelectorAll('.fade-up').forEach(el => fadeObserver.observe(el));
+    </script>
+
+</body>
+</html>
